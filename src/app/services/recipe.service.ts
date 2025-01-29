@@ -40,7 +40,11 @@ export class RecipeService {
 
   constructor() { }
 
-  getRecipes() {
+  getRecipes(): Recipe[] {
     return this.recipes.slice();
+  }
+
+  addRecipe(recipe: Recipe): void {
+    this.recipes.push({...recipe, id: this.recipes.length + 1});
   }
 }
