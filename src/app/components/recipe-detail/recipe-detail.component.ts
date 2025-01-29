@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-recipe-detail',
   imports: [],
   templateUrl: './recipe-detail.component.html',
-  styleUrl: './recipe-detail.component.css'
+  styleUrl: './recipe-detail.component.css',
+  standalone: true,
 })
 export class RecipeDetailComponent {
 
