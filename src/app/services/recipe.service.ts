@@ -48,6 +48,14 @@ export class RecipeService {
     this.recipes.push({...recipe, id: this.recipes.length + 1});
   }
 
+  deleteRecipe(id: number) {
+    this.recipes = this.recipes.filter(recipe => recipe.id != id);
+    // reset the ids to match the index
+    this.recipes.forEach((recipe,index) => {
+      recipe.id = index++;
+    })
+  }
+
   getRecipeById(id: number): Recipe {
     return this.recipes.filter(recipe => recipe.id === id)[0];
   }
