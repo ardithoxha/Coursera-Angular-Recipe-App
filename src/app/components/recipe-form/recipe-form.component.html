@@ -1,1 +1,37 @@
-<p>recipe-form works!</p>
+<div class="recipe-form">
+    <h2>Add a New Recipe</h2>
+    <form (ngSubmit)="submitRecipe()">
+        <label for="name">
+            Recipe Name:
+            <input type="text" name="name" id="name" [(ngModel)]="newRecipe.name" required>
+        </label>
+        <label for="ingredients">
+            Ingredients:
+            <div class="ingredient-list">
+                <input type="text" id="ingredients" name="ingredientInput" [(ngModel)]="ingredientInput">
+                <button type="button" (click)="addIngredient()">Add Ingredient</button>
+            </div>   
+            <ul>
+                @for (ingredient of newRecipe.ingredients; track $index) {
+                    <li>
+                        <span>{{ ingredient }}</span>
+                        <button type="button" (click)="removeIngredient($index)">Remove</button>
+                    </li>
+                }
+            </ul> 
+        </label>
+        
+
+        <label for="instructions">
+            Instructions:
+            <textarea name="instructions" id="instructions" [(ngModel)]="newRecipe.instructions" required></textarea>
+        </label>
+
+        <label for="imageUrl">
+            Image Url:
+            <input type="text" id="imageUrl" [(ngModel)]="newRecipe.imageUrl" name="imageUrl">
+        </label>
+
+        <button type="submit">Add</button>
+    </form>
+</div>
