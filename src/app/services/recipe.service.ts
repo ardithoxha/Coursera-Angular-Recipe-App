@@ -11,10 +11,10 @@ export class RecipeService {
       name: 'Pancakes',
       ingredients: ['Pancake package', 'Butter', 'Syroup'],
       instructions: 'Sift the dry ingredients together. Make a well and add the wet ingredients before you stir to combine. Then scoop the batter onto a hot pan. Cook for two to three minutes before you flip it. Make sure they brown on both sides.',
-      imageUrl: 'src/assets/pancakes.jpg'
+      imageUrl: '../../assets/pancakes.jpg'
     },
     {
-      id: 1,
+      id: 2,
       name: 'Greek salad',
       ingredients: [
         '1 large tomato', 
@@ -34,7 +34,7 @@ export class RecipeService {
         Cut the feta cheese into cubes and put them in the bowl alogn with the olives.
         Sprinkle salt and grind black pepper.
         Pour olive oil on the sala and voila.`,
-      imageUrl: 'src/assets/pancakes.jpg'
+      imageUrl: '../../assets/greek_salad.jpg'
     },
   ];
 
@@ -46,5 +46,9 @@ export class RecipeService {
 
   addRecipe(recipe: Recipe): void {
     this.recipes.push({...recipe, id: this.recipes.length + 1});
+  }
+
+  getRecipeById(id: number): Recipe {
+    return this.recipes.filter(recipe => recipe.id === id)[0];
   }
 }
