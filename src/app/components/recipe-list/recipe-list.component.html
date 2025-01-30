@@ -1,1 +1,11 @@
-<p>recipe-list works!</p>
+<div class="recipe-list">
+    <h2>Recipe List</h2>
+    <div>
+            @for (recipe of recipes; track $index) {
+            <a [routerLink]="['/recipe', recipe.id]">
+                <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" width="150" height="150">
+                <h3>{{ recipe.name }}</h3>
+            </a>
+        }
+        </div>
+</div>
