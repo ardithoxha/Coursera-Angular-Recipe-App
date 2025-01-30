@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Recipe } from '../../models/recipe.model';
 import { RecipeService } from '../../services/recipe.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-form',
@@ -20,7 +21,10 @@ export class RecipeFormComponent {
   };
   ingredientInput: string = '';
   
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router,
+  ) {}
   
   addIngredient() {
     if (this.ingredientInput.trim()) {
@@ -39,7 +43,11 @@ export class RecipeFormComponent {
     if (this.newRecipe.imageUrl === 'sandwitch') {
       this.newRecipe.imageUrl = '../../assets/sandwitch.jpg'
     }
-    if (this.newRecipe.name && this.newRecipe.instructions) {
+    if (
+      this.newRecipe.name &&
+      this.newRecipe.instructions &&
+      this.newRecipe.ingredients.length > 0
+    ) {
       this.recipeService.addRecipe(this.newRecipe);
       this.newRecipe = {
         id: 0,
@@ -48,6 +56,7 @@ export class RecipeFormComponent {
         instructions: '',
         imageUrl: ''
       };
+      this.router.navigate(['/'])
     }
   }
 }
