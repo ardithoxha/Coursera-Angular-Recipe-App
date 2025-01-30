@@ -1,12 +1,16 @@
 @if (recipe) {
-    <h2>{{ recipe.name }}</h2>
-    <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" width="300" height="300">
-    <h3>Ingredients</h3>
-    <ul>
-        @for (ingredient of recipe.ingredients; track $index) {
-            <li>{{ ingredient }}</li>
-        }
-    </ul>
-    <h3>Instructions</h3>
-    <p>{{ recipe.instructions }}</p>
+    <div class="recipe-container">
+        <h2>{{ recipe.name }}</h2>
+        <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" width="300" height="300">
+        <h3>Ingredients</h3>
+        <ul>
+            @for (ingredient of recipe.ingredients; track $index) {
+                <li>{{ ingredient }}</li>
+            }
+        </ul>
+        <h3>Instructions</h3>
+        <p>{{ recipe.instructions }}</p>
+    
+        <button type="button" (click)="deleteRecipe(recipe.id)">Delete Recipe</button>
+    </div>
 }
