@@ -1,11 +1,15 @@
-<div class="recipe-list">
+<div
+    class="recipe-list"
+    [ngStyle]="{'display': recipes.length === 0 ? 'block' : 'flex'}"
+>
     <h2>Recipe List</h2>
-    <div>
-            @for (recipe of recipes; track $index) {
-            <a [routerLink]="['/recipe', recipe.id]">
-                <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" width="150" height="150">
-                <h3>{{ recipe.name }}</h3>
-            </a>
-        }
-        </div>
+    @for (recipe of recipes; track $index) {
+        <a [routerLink]="['/recipe', recipe.id]">
+            <h3>{{ recipe.name }}</h3>
+            <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" width="80" height="80">
+        </a>
+    }
+    @if (recipes.length === 0) {
+        <button [routerLink]="['/add-recipe']" type="button">Add a new recipe</button>
+    }
 </div>
